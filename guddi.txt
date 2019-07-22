@@ -1,0 +1,354 @@
+Acceptlen.java 569
+import java.io.*;
+import java.util.Scanner;
+
+public class Acceptlen
+{
+ public static void main(String arg[])
+  {
+  	try
+  	{
+ 
+  	 Scanner sobj=new Scanner(System.in);
+
+  	 System.out.println("Enter the File");
+  	 String name=sobj.nextLine();
+
+  	 FileInputStream fobj=new FileInputStream(name);
+
+  	 System.out.println("Enter the Data");
+  	 String data=sobj.nextLine();
+
+  	 byte arr[]=new byte [1024];
+
+  	 File obj=new File(name);
+
+  	 System.out.println(obj.length());
+
+	}
+	catch(Exception e)
+	{
+		System.out.print(e);
+	}
+
+  }
+}
+Append.java 565
+import java.io.*;
+import java.util.Scanner;
+
+
+class Append
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+		 Scanner sobj=new Scanner(System.in);
+
+		 FileWriter f2= new FileWriter("demo1.txt",true);
+		 FileReader f1 = new FileReader("demo.txt");
+		 BufferedReader bobj=new BufferedReader(f1);
+
+		 System.out.println("Enter the String");
+		 String str=sobj.nextLine();
+
+		 int str1;
+
+		 while((str1=bobj.read())!=-1)
+		 {
+		 	f2.write((char)str1);
+		 }
+	    }
+	    catch(Exception e)
+	    {  	System.out.println(e);
+	    }
+	}
+
+}Compare.java 613
+import java.io.*;
+
+
+class Compare
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+		 FileInputStream f1 = new FileInputStream("demo.txt");
+		 FileInputStream f2 = new FileInputStream("demo1.txt");
+
+		 int i=0,j=0;
+
+		 while(((i=f1.read())!=-1)&&((j=f2.read())!=-1))
+		 {
+		   if(((char)i)==((char)j))
+		   {
+			System.out.println("Both Files Are Same");            
+		   }
+		   else
+		   {
+		   	System.out.println("Both Files Are Not Same");
+		   }
+
+		 }
+		 
+		 f1.close();
+		 f2.close();
+
+	    }
+	    catch(Exception e)
+	    {
+	    	System.out.println(e);
+	    }
+	}
+
+}Compare2.java 1265
+import java.io.*;
+import java.util.*;
+
+class Compare2
+{  
+public static void main(String args[])throws Exception
+{  
+    try
+    {  
+    	Scanner sobj=new Scanner(System.in);
+
+    	System.out.println("Enter the File1: ");
+    	String name1=sobj.nextLine();
+
+      System.out.println("Enter the File1 Data1: ");
+      String data1=sobj.nextLine();
+      
+      System.out.println("Enter the File2: ");
+      String name2=sobj.nextLine();
+
+      System.out.println("Enter the File1 Data2: ");
+      String data2=sobj.nextLine();
+      
+      FileInputStream fobj1,fobj2;
+
+      fobj1=new FileInputStream(name1);
+      fobj2=new FileInputStream(name2);
+
+      int one=fobj1.length();
+      int two=fobj2.length();
+
+      int i=0;
+      int j=0;
+
+      if(one==two)
+      {
+        for(i=0,j=0;((i<=fobj1.length())&&(j<=fobj2.length()));j++,i++)
+        {
+            if((char)i!=(char)j)
+            {
+              System.out.println("Files are not same");
+            }
+            else
+            {
+             System.out.println("Files are Same"); 
+            }
+        }     
+      }
+
+      fobj1.close();
+      fobj2.close();
+    }
+    
+   catch(Exception e)
+   {
+   	System.out.println(e);
+   }
+
+}
+}Copy.java 554
+import java.io.*;
+
+
+class Copy
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+		 FileInputStream f1 = new FileInputStream("demo.txt");
+		 FileOutputStream f2 = new FileOutputStream("demo1.txt",true);
+
+		 int i=0,j=0;
+
+		 while(((i=f1.read())!=-1))
+		 {
+		  f2.write((char)i);
+		  System.out.println(i);
+		  System.out.print(  (char)i);
+		 }
+		 
+		 f1.close();
+		 f2.close();
+		 System.out.println("Written Successfully.............");
+
+	    }
+	    catch(Exception e)
+	    {
+	    	System.out.println(e);
+	    }
+	}
+
+}Displayconsole.java 531
+import java.io.*;
+import java.util.Scanner;
+
+public class Displayconsole
+{
+ public static void main(String arg[])
+  {
+  	try
+  	{
+  	 Scanner sobj=new Scanner(System.in);
+
+  	 System.out.println("Enter the File");
+  	 String name=sobj.nextLine();
+
+  	 FileInputStream fobj;
+  	 fobj=new FileInputStream(name);
+
+  	 int i=0;
+  	 while((i=fobj.read())>0)
+  	 {
+  	  System.out.print((char)i);
+  	 }
+  	 fobj.close();
+     }
+
+    catch(Exception e)
+    {
+    	System.out.println(e);
+    }
+  }
+}
+
+
+
+
+Filestrlen.java 798
+import java.io.*;
+import java.util.*;
+
+class Filestrlen
+{  
+public static void main(String args[])throws Exception
+{  
+    try
+    {  
+    	FileOutputStream fobj=new FileOutputStream(namef);
+    	Scanner sobj=new Scanner(System.in);
+
+    	System.out.println("Enter the Folder: ");
+    	String name=sobj.nextLine();
+
+
+    	System.out.println("Enter the File: ");
+    	String namef=sobj.nextLine();
+
+
+    	File nnew=new File(namef);
+
+    	nnew.createNewFile();
+
+
+
+    	File folder =new File(name);
+    	File[]files=folder.listFiles();
+
+    	for(File file:files)
+    	{
+    		fobj.write(file.getName());
+    		fobj.write(""+folder.length()+"byte");
+    		
+
+    	} 
+    	
+    	}
+
+    	catch(Exception e)
+    	{
+    		System.out.print(e);
+    	}
+    }
+}
+
+
+Listfiles.java 1035
+import java.io.*;
+import java.util.*;
+
+class Listfiles
+{  
+public static void main(String args[])throws Exception
+{  
+    try
+    {  
+    	Scanner sobj=new Scanner(System.in);
+
+    	System.out.println("Enter the File1: ");
+    	String name1=sobj.nextLine();
+      
+      System.out.println("Enter the File2: ");
+      String name2=sobj.nextLine();
+      
+      FileInputStream fobj1;
+      fobj1=new FileInputStream(name1);
+
+      FileInputStream fobj2;
+      fobj2=new FileInputStream(name2);
+
+      int one=fobj1.length();
+      int two=fobj2.length();
+
+      int i=0;
+      int j=0;
+
+      if(one==two)
+      {
+          while(
+                 ((i=fobj1.read()!=-1))
+               &&
+                 ((j=fobj2.read()!=-1))
+               )
+          {
+            if((char)i!=0)
+            {
+              System.out.println("Files are not same");
+            }
+
+          }
+
+      }
+      fobj.close();
+
+    }
+   catch(Exception e)
+   {
+   	System.out.println(e);
+   }
+
+}
+}Main.java 123
+class Main
+{
+    public static void main (String arg[])
+    {
+        System.out.println("\n Hello World");
+
+    }
+}one.java 123
+class Main
+{
+    public static void main (String arg[])
+    {
+        System.out.println("\n Hello World");
+
+    }
+}
